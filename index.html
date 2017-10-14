@@ -6,8 +6,60 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+  <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
-
+<div class="reviews"></div>
+<div id="map"></div>
+<script id="header-template" type="text/x-handlebars-template">
+  <header class="header">
+    <div class="container header__wrapper">
+      {{address}}
+    </div>
+    <span class="header__close"></span>
+  </header>
+  <div class="container">
+    <div class="reviews__content">
+      <ul class="reviews__list">
+        {{#each list}}
+        <li class="reviews__item">
+          <div class="reviews__item-heading">
+            <span class="reviews__name">{{name}}</span>
+            <span class="reviews__place">{{place}}</span>
+            <span class="reviews__date">{{date}}</span>
+          </div>
+          <p class="reviews__text">{{review}}</p>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    <form action="#" class="reviews__form form">
+      <fieldset class="form__section">
+        <legend class="form__title">
+          Ваш отзыв
+        </legend>
+        <div class="form__section-wrapper">
+          <input type="text" class="form__field form__field--name" name="name" placeholder="Ваше имя">
+          <input type="text" class="form__field form__field--place" name="place" placeholder="Укажите место">
+          <textarea name="impression" cols="30" rows="10" class="form__field form__field--impression"
+                    placeholder="Поделитесь впечатлениями"></textarea>
+          <button type="submit" class="btn">Добавить</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</script>
+<script id="switch-template" type="text/x-handlebars-template">
+  <div class="switch">
+    <b class="switch__place">{{place}}</b>
+    <a class="switch__address" href="#">{{address}}</a>
+    <span class="switch__review">{{review}}</span>
+    <span class="switch__date">{{date}}</span>
+  </div>
+</script>
+<script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>
